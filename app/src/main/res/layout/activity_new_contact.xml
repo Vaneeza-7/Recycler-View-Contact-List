@@ -17,7 +17,8 @@
             android:id="@+id/name"
             android:layout_marginTop="5dp"
             android:textSize="20sp"
-            android:hint="Enter Name:"/>
+            android:inputType="textPersonName"
+            android:hint="Enter Name ❤︎:"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -26,7 +27,7 @@
             android:layout_marginTop="5dp"
             android:textSize="20sp"
             android:inputType="phone"
-            android:hint="Enter Number:"/>
+            android:hint="Enter Number ☎:"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -34,12 +35,12 @@
             android:id="@+id/email"
             android:layout_marginTop="5dp"
             android:textSize="20sp"
-            android:hint="Enter Email:"/>
+            android:hint="Enter Email 📧:"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save 📞"
+            android:text="Save ✔️"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:backgroundTint="#4CAF50"

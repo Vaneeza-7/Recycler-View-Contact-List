@@ -1,8 +1,8 @@
 package com.vaneezaahmad.myrecyclerviewex
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class MainActivity : AppCompatActivity(){
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,7 +40,8 @@ class MainActivity : AppCompatActivity(){
         list.add(Model("Asad", "03135346", "asad@gmail.com"))
         list.add(Model("Nofil", "032233311", "nofil@gmail.com"))
 
-        val adapter = MyAdaptor(list,this)
+        val sortedList = list.sortedBy { it.name }
+        val adapter = MyAdaptor(ArrayList(sortedList),this)
         val rv = findViewById<RecyclerView>(R.id.rv)
         rv. layoutManager = LinearLayoutManager(this)
         rv.adapter=adapter
@@ -53,11 +55,14 @@ class MainActivity : AppCompatActivity(){
                 val number = data?.getStringExtra("number")
                 val email = data?.getStringExtra("email")
                 list.add(Model(name.toString(), number.toString(),email.toString()))
-                adapter.notifyDataSetChanged()
+                //sort the list again
+                val sortedList = list.sortedBy { it.name }
+                adapter.updateList(ArrayList(sortedList))
+                //adapter.list = ArrayList(sortedList)
+                //adapter.notifyDataSetChanged()
             }
 
         }
-
 
         add.setOnClickListener {
             resultLauncher.launch(Intent(this, NewContact::class.java))

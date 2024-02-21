@@ -40,10 +40,10 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Close 📞"
+            android:text="Close ❌"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:backgroundTint="#4CAF50"
+            android:backgroundTint="#E11506"
             android:textSize="20sp"
             android:id="@+id/close"/>
 

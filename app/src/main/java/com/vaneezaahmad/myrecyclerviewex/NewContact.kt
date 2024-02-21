@@ -21,7 +21,9 @@ class NewContact : AppCompatActivity() {
             intent.putExtra("name", name.text.toString())
             intent.putExtra("number", number.text.toString())
             intent.putExtra("email", email.text.toString())
+            //complete activity and go back to main activity
             setResult(Activity.RESULT_OK, intent)
+            finish()
         }
     }
 }

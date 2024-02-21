@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.contentValuesOf
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 
@@ -59,6 +58,13 @@ class MyAdaptor(list: ArrayList<Model>, c: Context) : RecyclerView.Adapter<MyAda
 
             true // Return true to
         }
+
+    }
+
+    fun updateList(arrayList: ArrayList<Model>) {
+        list.clear()
+        list.addAll(arrayList)
+        notifyDataSetChanged()
 
     }
 
