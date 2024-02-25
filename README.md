@@ -7,7 +7,9 @@ A contact list made using recycler view.
 - View contact information.
 - Delete contact upon long press.
 
-## Features which require modification:
+## Features which require help:
 - Alphabetical sorting of the contacts.
 - Adding multiple numbers to single contact. (optional)
 - Pin certain contacts.
+
+For contribution, Please upon a pull request detailing your changes.
