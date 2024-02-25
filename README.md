@@ -12,4 +12,4 @@ A contact list made using recycler view.
 - Adding multiple numbers to single contact. (optional)
 - Pin certain contacts.
 
-For contribution, Please upon a pull request detailing your changes.
+For contribution, Fork this repo and open a pull request detailing your changes.
