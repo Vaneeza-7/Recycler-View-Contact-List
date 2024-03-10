@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.SearchView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,25 +21,21 @@ class MainActivity : AppCompatActivity(){
         //val is mutable
         val list = ArrayList<Model>()
         list.add(Model("Ali", "031233311", "ali@gmail.com"))
-        list.add(Model("Ahmed", "0311234", "ahmed@gmail.com"))
-        list.add(Model("Asad", "03135346", "asad@gmail.com"))
-        list.add(Model("Nofil", "032233311", "nofil@gmail.com"))
+        list.add(Model("Zain", "031233311", "zain@gmail.com"))
+        list.add(Model("Ahmed", "031233311", "ahmed@gmail.com"))
+        list.add(Model("Bilal", "031233311", "bilal@gmail.com"))
+        list.add(Model("Zubair", "031233311", "zubair@gmail.com"))
         list.add(Model("Ali", "031233311", "ali@gmail.com"))
-        list.add(Model("Ahmed", "0311234", "ahmed@gmail.com"))
-        list.add(Model("Asad", "03135346", "asad@gmail.com"))
-        list.add(Model("Nofil", "032233311", "nofil@gmail.com"))
+        list.add(Model("Zain", "031233311", "zain@gmail.com"))
+        list.add(Model("Ahmed", "031233311", "ahmed@gmail.com"))
+        list.add(Model("Bilal", "031233311", "bilal@gmail.com"))
+        list.add(Model("Zubair", "031233311", "zubair@gmail.com"))
         list.add(Model("Ali", "031233311", "ali@gmail.com"))
-        list.add(Model("Ahmed", "0311234", "ahmed@gmail.com"))
-        list.add(Model("Asad", "03135346", "asad@gmail.com"))
-        list.add(Model("Nofil", "032233311", "nofil@gmail.com"))
-        list.add(Model("Ali", "031233311", "ali@gmail.com"))
-        list.add(Model("Ahmed", "0311234", "ahmed@gmail.com"))
-        list.add(Model("Asad", "03135346", "asad@gmail.com"))
-        list.add(Model("Nofil", "032233311", "nofil@gmail.com"))
-        list.add(Model("Ali", "031233311", "ali@gmail.com"))
-        list.add(Model("Ahmed", "0311234", "ahmed@gmail.com"))
-        list.add(Model("Asad", "03135346", "asad@gmail.com"))
-        list.add(Model("Nofil", "032233311", "nofil@gmail.com"))
+        list.add(Model("Zain", "031233311", "zain@gmail.com"))
+        list.add(Model("Ahmed", "031233311", "ahmed@gmail.com"))
+        list.add(Model("Bilal", "031233311", "bilal@gmail.com"))
+        list.add(Model("Zubair", "031233311", "zubair@gmail.com"))
+
 
         val sortedList = list.sortedBy { it.name }
         val adapter = MyAdaptor(ArrayList(sortedList),this)
@@ -64,8 +61,32 @@ class MainActivity : AppCompatActivity(){
 
         }
 
+        val searchView = findViewById<SearchView>(R.id.search_view)
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val filteredModelList: ArrayList<Model> = ArrayList()
+
+                if (newText != null) {
+                    for (model in list) {
+                        if (model.name.lowercase().contains(newText.lowercase())) {
+                            filteredModelList.add(model)
+                        }
+                    }
+                }
+
+                adapter.filterList(filteredModelList)
+                return true
+            }
+        })
+
         add.setOnClickListener {
             resultLauncher.launch(Intent(this, NewContact::class.java))
+
         }
     }
 

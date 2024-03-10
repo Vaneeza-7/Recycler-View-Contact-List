@@ -61,6 +61,11 @@ class MyAdaptor(list: ArrayList<Model>, c: Context) : RecyclerView.Adapter<MyAda
 
     }
 
+    fun filterList(filteredList: ArrayList<Model>) {
+        list = filteredList
+        notifyDataSetChanged()
+    }
+
     fun updateList(arrayList: ArrayList<Model>) {
         list.clear()
         list.addAll(arrayList)
